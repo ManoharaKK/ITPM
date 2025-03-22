@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cd itpm_Fe && npm run dev",
     "dev:chatbot": "cd aiChatBot/laptop-shop-chatbot && npm start",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:chatbot\"",
     "install:fe": "cd itpm_Fe && npm install",
     "install:chatbot": "cd aiChatBot/laptop-shop-chatbot && npm install",
     "install:all": "npm run install:fe && npm run install:chatbot"
@@ -16,5 +17,8 @@
     "react"
   ],
   "author": "",
-  "license": "ISC"
-} 
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

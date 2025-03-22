@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaUser, FaShoppingBag, FaHeart, FaComments, FaCog, FaEdit, FaTrash, FaSave, FaTimes, FaCamera, FaUpload, FaSignOutAlt, FaDownload, FaSpinner } from 'react-icons/fa';
+import { FaUser, FaShoppingBag, FaHeart, FaCog, FaEdit, FaTrash, FaSave, FaTimes, FaCamera, FaUpload, FaSignOutAlt, FaDownload, FaSpinner } from 'react-icons/fa';
 import Footer from '../Components/Footer';
 import ProfileCover from '../../src/assets/Images/Home/Hero.jpg'
 import OrderHistory from '../Components/OrderHistory';
@@ -46,19 +46,6 @@ const Profile = () => {
       name: 'Ultra Slim Laptop',
       price: '$1299.99',
       image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=300&fit=crop'
-    }
-  ]);
-
-  const [chatHistory] = useState([
-    {
-      id: '1',
-      date: '2024-03-15',
-      message: 'Thank you for your purchase!'
-    },
-    {
-      id: '2',
-      date: '2024-03-10',
-      message: 'Your order has been shipped.'
     }
   ]);
 
@@ -169,6 +156,13 @@ const Profile = () => {
     }
   };
 
+  const tabItems = [
+    { id: 'overview', label: 'Overview', icon: FaUser },
+    { id: 'orders', label: 'Orders', icon: FaShoppingBag },
+    { id: 'wishlist', label: 'Wishlist', icon: FaHeart },
+    { id: 'settings', label: 'Settings', icon: FaCog },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 text-white" style={spaceGrotesk}>
       {/* Profile Header */}
@@ -240,14 +234,7 @@ const Profile = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
         <div className="bg-black/30 backdrop-blur-sm rounded-xl shadow-lg border border-purple-900/50 p-1">
           <nav className="flex space-x-8 overflow-x-auto">
-            {[
-              { id: 'profile', label: 'Profile', icon: FaUser },
-              { id: 'orders', label: 'Orders', icon: FaShoppingBag },
-              { id: 'wishlist', label: 'Wishlist', icon: FaHeart },
-              { id: 'chat', label: 'Chat History', icon: FaComments },
-              { id: 'settings', label: 'Settings', icon: FaCog },
-              { id: 'signout', label: 'Sign Out', icon: FaSignOutAlt }
-            ].map((tab) => (
+            {tabItems.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
@@ -267,7 +254,7 @@ const Profile = () => {
         {/* Content Sections */}
         <div className="mt-8">
           {/* Profile Section */}
-          {activeTab === 'profile' && (
+          {activeTab === 'overview' && (
             <div className="bg-black/30 backdrop-blur-sm shadow-xl rounded-xl p-8 border border-purple-900/50">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
@@ -426,20 +413,6 @@ const Profile = () => {
                     <button className="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 font-medium transition-all duration-300 tracking-wide">
                       Add to Cart
                     </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Chat History Section */}
-          {activeTab === 'chat' && (
-            <div className="bg-black/30 backdrop-blur-sm shadow-xl rounded-xl divide-y divide-purple-800 border border-purple-900/50">
-              {chatHistory.map((chat) => (
-                <div key={chat.id} className="p-6 hover:bg-purple-900/20 transition-colors duration-300">
-                  <div className="flex justify-between items-center">
-                    <p className="text-base text-white tracking-wide">{chat.message}</p>
-                    <span className="text-sm text-gray-400 tracking-wide">{chat.date}</span>
                   </div>
                 </div>
               ))}

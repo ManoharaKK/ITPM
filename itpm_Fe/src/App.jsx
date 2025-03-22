@@ -8,6 +8,7 @@ import { Routes } from "react-router-dom"
 import Profile from "./routes/Profile"
 import Inventory from "./Pages/Inventory"
 import ProductDetail from './routes/ProductDetail'
+import ChatBot from './routes/ChatBot'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
     <Route path="/profile" element={<Profile />} />
     <Route path="/inventory" element={<Inventory />} />
     <Route path="/product/:id" element={<ProductDetail />} />
+    <Route path="/chatbot" element={<ChatBot />} />
     </Routes>
     </>
   )

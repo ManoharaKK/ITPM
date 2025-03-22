@@ -10,9 +10,9 @@ const Home = () => {
   const handleSeeAll = () => {
     navigate('/product');
   };
-
+  
   const handleChatWithBot = () => {
-    window.location.href = 'http://localhost:3001'; // Navigate to the chatbot application running on port 3001
+    navigate('/chatbot');
   };
   
   const featuredProducts = [
@@ -84,14 +84,14 @@ const Home = () => {
             <div className="text-left animate-fade-in-up">
               <div className="inline-block mb-4">
                 <span className="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-full text-sm font-medium animate-fade-in">
-                  AI-Powered Shopping Experience
+                  Premium Shopping Experience
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-fade-in-up">
                 Find Your Perfect Laptop
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up delay-200">
-                Discover premium laptops tailored to your needs with our AI-powered recommendation system
+                Discover premium laptops tailored to your needs with our recommendation system
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
                 <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl transition duration-300 transform hover:scale-105 font-medium text-lg shadow-lg hover:shadow-purple-500/25">
@@ -105,12 +105,12 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Robot Image - Right Side */}
+            {/* Hero Image - Right Side */}
             <div className="relative w-full animate-fade-in-up delay-400">
               <div className="relative z-10">
                 <img
                   src={Hero}
-                  alt="AI Assistant"
+                  alt="Hero Image"
                   className="w-full h-auto transform hover:scale-105 transition-transform duration-500 hover:rotate-1"
                 />
               </div>

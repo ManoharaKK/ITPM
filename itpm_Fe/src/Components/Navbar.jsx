@@ -49,6 +49,7 @@ const Navbar = () => {
           <li><Link to="/Product" className="hover:text-gray-400">Product</Link></li>
           <li><Link to="/inventory" className="hover:text-gray-400">Inventory</Link></li>
           <li><Link to="/contact" className="hover:text-gray-400">Contact</Link></li>
+          <li><Link to="/chatbot" className="hover:text-gray-400">AI Assistant</Link></li>
           <li className="relative" ref={dropdownRef}>
             <button
               onClick={() => setShowProfileDropdown(!showProfileDropdown)}
@@ -136,6 +137,7 @@ const Navbar = () => {
           <li><Link to="/Product" className="block p-2 hover:bg-gray-700">Product</Link></li>
           <li><Link to="/inventory" className="block p-2 hover:bg-gray-700">Inventory</Link></li>
           <li><Link to="/contact" className="block p-2 hover:bg-gray-700">Contact</Link></li>
+          <li><Link to="/chatbot" className="block p-2 hover:bg-gray-700">AI Assistant</Link></li>
           <li className="space-y-1">
             <button
               onClick={() => setShowProfileDropdown(!showProfileDropdown)}
