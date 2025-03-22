@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FaUser, FaShoppingBag, FaHeart, FaComments, FaCog, FaEdit, FaTrash, FaSave, FaTimes, FaCamera, FaUpload, FaSignOutAlt, FaDownload, FaSpinner, FaMapMarkerAlt, FaBriefcase, FaEnvelope, FaPhone, FaCalendarAlt, FaVenusMars, FaCreditCard, FaGlobe, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import React, { useEffect, useRef, useState } from 'react';
+import { FaBriefcase, FaCalendarAlt, FaCamera, FaCog, FaComments, FaCreditCard, FaDownload, FaEdit, FaEnvelope, FaFacebookF, FaHeart, FaInstagram, FaLinkedinIn, FaPhone, FaSave, FaShoppingBag, FaSignOutAlt, FaSpinner, FaTimes, FaTrash, FaTwitter, FaUser, FaVenusMars } from 'react-icons/fa';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Slider from 'react-slick';
-import Footer from '../Components/Footer';
-import ProfileCover from '../../src/assets/Images/Home/Hero.jpg'
-import OrderHistory from '../Components/OrderHistory';
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import ProfileCover from '../../src/assets/Images/Home/Hero.jpg';
+import Footer from '../Components/Footer';
+import OrderHistory from '../Components/OrderHistory';
 import "../styles/carousel.css";
 // Add Space Grotesk font import
 const spaceGrotesk = {
@@ -134,14 +134,23 @@ const Profile = () => {
   };
 
   const handleConfirmDelete = () => {
-    if (deleteConfirmText.toLowerCase() !== 'yes i need delete my account') {
-      setDeleteError('Please type the exact phrase to confirm deletion');
-      return;
+    if (selectedOrder) {
+      // Get existing orders from localStorage
+      const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+      
+      // Filter out the selected order
+      const updatedOrders = existingOrders.filter(order => order.id !== selectedOrder.id);
+      
+      // Save updated orders back to localStorage
+      localStorage.setItem('orders', JSON.stringify(updatedOrders));
+      
+      // Update the orders state
+      setOrders(updatedOrders);
+      
+      // Close the delete modal
+      setShowDeleteModal(false);
+      setSelectedOrder(null);
     }
-    
-    // Here you would typically make an API call to delete the account
-    localStorage.clear();
-    navigate('/login');
   };
 
   const handleSaveEdit = () => {
